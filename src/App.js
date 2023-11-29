@@ -2,14 +2,11 @@ import React from "react";
 import "./App.css";
 import Auth from "./components/Auth";
 import Layout from "./components/Layout";
-
+import { useSelector } from "react-redux";
 function App() {
-  return (
-    <div className="App">
-      <Auth />
-      {/* <Layout /> */}
-    </div>
-  );
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  console.log("is logged in", isLoggedIn);
+  return <div className="App">{isLoggedIn ? <Layout /> : <Auth />}</div>;
 }
 
 export default App;
